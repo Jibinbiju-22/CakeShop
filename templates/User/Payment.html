@@ -1,0 +1,72 @@
+{% include "User/UserHeader.html" %}
+
+{% load static %}
+
+    <!-- About Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Your Orders at a Glance</h2>
+                <h1 class="display-4 text-uppercase">Order Status Overview</h1>
+            </div>
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="/images/{{booking.cakeid.cakephoto}}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pb-5">
+                    <h4 class="mb-4">{{booking.cakeid.cakename}}</h4>
+                    <p class="mb-5">{{booking.cakeid.cakedescription}}</p>
+                    <div class="row g-5">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-balance-scale fa-2x text-white"></i>
+                            </div>
+                            <h4>{{booking.cakeid.cakeweight}} Kg</h4>
+                        </div>
+                         <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-list-ol fa-2x text-white"></i>
+
+                            </div>
+                            <h4>{{booking.quantity}} Cakes</h4>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-rupee-sign fa-2x text-white"></i>
+                            </div>
+                            <h4 class="text-uppercase">{{booking.totalamount}}/-</h4><br>
+                            <p class="mb-0">Delivery Address : {{booking.deliveryaddress}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-calendar-check fa-2x text-white"></i>
+                            </div>
+                            <h4 class="text-uppercase">{{booking.requireddate}}</h4>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    {% if booking.bookingstatus == 'Confirmed' %}
+                        <a href="/User/ConfirmPayment/{{booking.bookingid}}">
+                        <button class="btn btn-primary border-inner py-3 px-5">Payment</button>
+                        </a>
+                    {% elif booking.bookingstatus == 'Paid' %}
+                        <button class="btn btn-primary border-inner py-3 px-5" disabled>Payment</button><br><br>
+                        <p class="mb-0">You already paid for the order.</p>
+                    {% elif booking.bookingstatus == 'Delivered' %}
+                        <button class="btn btn-primary border-inner py-3 px-5" disabled>Payment</button><br><br>
+                        <p class="mb-0">You already paid for the order.</p>
+                    {% else %}
+                        <button class="btn btn-primary border-inner py-3 px-5" disabled >Payment</button><br><br>
+                        <p class="mb-0">You need to wait for your order's approval!</p>
+                    {% endif %}
+
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- About End -->
+
+{% include "User/UserFooter.html" %}

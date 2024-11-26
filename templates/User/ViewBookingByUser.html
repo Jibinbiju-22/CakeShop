@@ -1,0 +1,52 @@
+{% include "User/UserHeader.html" %}
+
+{% load static %}
+
+<!-- Page Header Start -->
+    <div class="container-fluid bg-dark bg-img p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase text-white">BOOKING HISTORY</h1>
+            </div>
+        </div>
+    </div>
+<!-- Page Header End -->
+
+
+    <!-- Testimonial Start -->
+
+    <div class="container-fluid py-5">
+        <div class="container">
+
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Your Orders at a Glance</h2>
+                <h1 class="display-4 text-uppercase">Order Status Overview</h1>
+            </div>
+
+            <div class="owl-carousel testimonial-carousel">
+
+                {% for b in booking %}
+                 <div class="testimonial-item bg-dark text-white border-inner p-4">
+                    <a href="/User/Payment/{{b.bookingid}}">
+                    <div class="d-flex align-items-center mb-3">
+                        <img class="img-fluid flex-shrink-0" src="/images/{{b.cakeid.cakephoto}}" style="width: 60px; height: 60px;">
+                        <div class="ps-3">
+                            <h4 class="text-primary text-uppercase mb-1">{{b.cakeid.cakename}}</h4>
+                            <span>{{b.bookingstatus}}</span>
+                        </div>
+                    </div>
+                    <p class="mb-0">Quantity : {{b.quantity}}<br>
+                        Total Amount : Rs. {{b.totalamount}}/-
+                    </p>
+                    </a>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Testimonial End -->
+
+{% include "User/UserFooter.html" %}

@@ -1,0 +1,49 @@
+{% include "Admin/AdminHeader.html" %}
+
+{% load static %}
+
+<div class="container">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <center>
+                    <div class="card-header">
+                      <h4 class="card-title">CATEGORY</h4>
+                    </div>
+                  </center>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table
+                        id="basic-datatables"
+                        class="display table table-striped table-hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>SL NO.</th>
+                            <th>Category Name</th>
+                            <th>Photo</th>
+                          </tr>
+                        </thead>
+                        {% for c in category %}
+                        <tbody>
+                          <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ c.categoryname }}</td>
+                            <td>
+                              <img src="/images/{{ c.categoryphoto }}" alt="Category photo" style="width: 75px; height: auto;">
+                            </td>
+                          </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+{% include "Admin/AdminFooter.html" %}

@@ -1,0 +1,59 @@
+{% include "Admin/AdminHeader.html" %}
+
+{% load static %}
+
+<div class="container">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <center>
+                    <div class="card-header">
+                      <h4 class="card-title">CAKE</h4>
+                    </div>
+                  </center>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table
+                        id="basic-datatables"
+                        class="display table table-striped table-hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>SL NO.</th>
+                            <th>Cake Name</th>
+                            <th>Photo</th>
+                            <th>Weight</th>
+                            <th>Amount</th>
+                            <th>Description</th>
+                            <th>Category</th>
+                            <th>Flavour</th>
+                          </tr>
+                        </thead>
+                        {% for c in cake %}
+                        <tbody>
+                          <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ c.cakename }}</td>
+                            <td>
+                              <img src="/images/{{ c.cakephoto }}" alt="Cake photo" style="width: 75px; height: auto;">
+                            </td>
+                            <td>{{ c.cakeweight }}</td>
+                            <td>{{ c.amount }}</td>
+                            <td>{{ c.cakedescription }}</td>
+                            <td>{{ c.categoryid.categoryname }}</td>
+                            <td>{{ c.flavourid.flavourname }}</td>
+                          </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+{% include "Admin/AdminFooter.html" %}

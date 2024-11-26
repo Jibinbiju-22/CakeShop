@@ -1,0 +1,71 @@
+{% include "Guest/GuestHeader.html" %}
+
+{% load static %}
+
+<!-- Page Header Start -->
+    <div class="container-fluid bg-dark bg-img p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase text-white">LOGIN</h1>
+<!--                <a href="">Home</a>-->
+<!--                <i class="far fa-square text-primary px-2"></i>-->
+<!--                <a href="">Contact</a>-->
+            </div>
+        </div>
+    </div>
+<!-- Page Header End -->
+
+<!-- Contact Start -->
+    <div class="container-fluid contact position-relative px-5" style="margin-top: 90px;">
+        <div class="container">
+            <div class="row g-5 mb-5">
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <i class="bi bi-geo-alt fs-1 text-white"></i>
+                        <h6 class="text-uppercase my-2">Our Office</h6>
+                        <span>Kotolas Group Of Business, KP Vallon Road, Kadavantra, Kochi-20</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <i class="bi bi-envelope-open fs-1 text-white"></i>
+                        <h6 class="text-uppercase my-2">Email Us</h6>
+                        <span>reachus@kotolas.com</span>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6">
+                    <div class="bg-primary border-inner text-center text-white p-5">
+                        <i class="bi bi-phone-vibrate fs-1 text-white"></i>
+                        <h6 class="text-uppercase my-2">Call Us</h6>
+                        <span>7510203153</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <form method="post" action="{% url 'Login' %}" >
+                        {% csrf_token %}
+                        <div class="row g-3">
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control bg-light border-0 px-4" placeholder="Username / E-mail" style="height: 55px;" name="username" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <input type="password" class="form-control bg-light border-0 px-4" placeholder="Password" style="height: 55px;" name="password" required>
+                            </div>
+                            <div class="col-sm-12">
+                                <button class="btn btn-primary border-inner w-100 py-3" type="submit">Login</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Contact End -->
+<br>
+<br>
+<br>
+<br>
+<br>
+
+{% include "Guest/GuestFooter.html" %}

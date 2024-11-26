@@ -1,0 +1,44 @@
+{% include "User/UserHeader.html" %}
+
+{% load static %}
+
+<!-- Page Header Start -->
+    <div class="container-fluid bg-dark bg-img p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase text-white">CATEGORY</h1>
+            </div>
+        </div>
+    </div>
+    <!-- Page Header End -->
+
+     <!-- Team Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">From Decadent to Divine</h2>
+                <h1 class="display-4 text-uppercase">Savor Every Slice</h1>
+            </div>
+            <div class="row g-5">
+
+                {% for c in category %}
+                <div class="col-lg-4 col-md-6">
+                <a href="{% url 'ViewCakeByCategoryUser' id=c.categoryid %}">
+                    <div class="team-item">
+                        <div class="position-relative overflow-hidden">
+                            <img class="img-fluid w-100" src="/images/{{ c.categoryphoto }}" alt="" style="height: 444px; object-fit: cover; width: 100%;">
+                        </div>
+                        <div class="bg-dark border-inner text-center p-4">
+                            <h4 class="text-uppercase text-primary">{{c.categoryname}}</h4>
+                        </div>
+                    </div>
+                </a>
+                </div>
+                {% endfor %}
+
+            </div>
+        </div>
+    </div>
+    <!-- Team End -->
+
+{% include "User/UserFooter.html" %}

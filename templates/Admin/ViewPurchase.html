@@ -1,0 +1,61 @@
+{% include "Admin/AdminHeader.html" %}
+
+{% load static %}
+
+<div class="container">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <center>
+                    <div class="card-header">
+                      <h4 class="card-title">PURCHASES</h4>
+                    </div>
+                    </center>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table
+                        id="basic-datatables"
+                        class="display table table-striped table-hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>Cake Name</th>
+                            <th>Photo</th>
+                            <th>Quantity</th>
+                            <th>Date</th>
+                            <th>Address</th>
+                            <th>Contact Number</th>
+                            <th>Status</th>
+                          </tr>
+                        </thead>
+                        {% for b, u in bookings_with_users %}
+                        <tbody>
+                          <tr>
+                            <td>{{ b.cakeid.cakename }}</td>
+                            <td>
+                              <img src="/images/{{ b.cakeid.cakephoto }}" alt="{{ b.cakeid.cakephoto }}" style="width: 75px; height: auto;">
+                            </td>
+                            <td>{{ b.quantity }}</td>
+                            <td>{{ b.requireddate }}</td>
+                            <td>{{ b.deliveryaddress }}</td>
+                             <td>{{ u.contactnumber }}</td>
+                            <td>
+                              <a>
+                              <button class="btn btn-success py-2 px-4">{{b.bookingstatus}}</button>
+                              </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+{% include "Admin/AdminFooter.html" %}

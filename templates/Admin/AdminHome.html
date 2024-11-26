@@ -1,0 +1,78 @@
+{% include "Admin/AdminHeader.html" %}
+{% load static %}
+
+        <div class="container">
+          <div class="page-inner">
+
+            <center><h3 class="fw-bold mb-3">DASHBOARD</h3></center><br>
+
+            <div class="row">
+              <div class="col-md-4">
+                <div class="card card-round">
+                  <div class="card-body">
+                      <center><div class="card-title">NEW CUSTOMERS</div></center>
+                    <div class="card-list py-4">
+                      {% for u in user %}
+                      <div class="item-list">
+                        <div class="avatar">
+                         <img
+                            src="/images/{{u.profilephoto}}"
+                            alt="..."
+                            class="avatar-img rounded-circle"
+                          />
+                        </div>
+                        <div class="info-user ms-3">
+                          <div class="username">{{u.name}}</div>
+                          <div class="status">{{u.contactnumber}}</div>
+                        </div>
+                      </div>
+                      {% endfor %}
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-8">
+                <div class="card card-round">
+                  <div class="card-header">
+                      <center><div class="card-title">PURCHASE HISTORY</div></center>
+                  </div>
+                  <div class="card-body p-0">
+                    <div class="table-responsive">
+                      <!-- Projects table -->
+                      <table class="table align-items-center mb-0">
+                        <thead class="thead-light">
+                          <tr>
+                            <th scope="col">Purchase Number</th>
+                            <th scope="col" class="text-start">Date</th>
+                            <th scope="col" class="text-start">Amount</th>
+                            <th scope="col" class="text-start">Status</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for p in pay %}
+                        <tr>
+                            <td scope="row">
+                              {{p.bookingid}}
+                            </td>
+                            <td class="text-start">{{p.requireddate}}</td>
+                            <td class="text-start">Rs. {{p.totalamount}}</td>
+                            <td class="text-start">
+                              <span class="badge badge-success">{{p.bookingstatus}}</span>
+                            </td>
+                          </tr>
+                          {% endfor %}
+
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% include "Admin/AdminFooter.html" %}
+
+

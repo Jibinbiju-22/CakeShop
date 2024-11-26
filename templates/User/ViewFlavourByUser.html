@@ -1,0 +1,43 @@
+{% include "User/UserHeader.html" %}
+
+{% load static %}
+
+<!-- Page Header Start -->
+    <div class="container-fluid bg-dark bg-img p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase text-white">FLAVOUR</h1>
+            </div>
+        </div>
+    </div>
+<!-- Page Header End -->
+
+
+    <!-- Testimonial Start -->
+    <div class="container-fluid py-5">
+        <div class="container">
+
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Baked to Perfection, Flavored for You</h2>
+                <h1 class="display-4 text-uppercase">Taste the Delight</h1>
+            </div>
+
+            <div class="owl-carousel testimonial-carousel">
+
+                {% for f in flavour %}
+                <div class="testimonial-item bg-dark text-white border-inner p-4">
+                <a href="{% url 'ViewCakeByFlavourUser' id=f.flavourid %}">
+                     <div class="bg-dark text-center p-4">
+                            <h4 class="text-uppercase text-primary">{{f.flavourname}}</h4>
+                        </div>
+                </a>
+                </div>
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </div>
+    <!-- Testimonial End -->
+
+{% include "User/UserFooter.html" %}

@@ -1,0 +1,56 @@
+{% include "User/UserHeader.html" %}
+
+{% load static %}
+
+ <!-- Page Header Start -->
+    <div class="container-fluid bg-dark bg-img p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase text-white">{{cake.cakename}}</h1>
+            </div>
+        </div>
+    </div>
+<!-- Page Header End -->
+
+<!-- About Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Crafted for Your Moments</h2>
+                <h1 class="display-4 text-uppercase">Baked to Perfection</h1>
+            </div>
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="/images/{{cake.cakephoto}}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pb-5">
+                    <h4 class="mb-4">{{cake.cakename}}</h4>
+                    <p class="mb-5">{{cake.cakedescription}}</p>
+                    <div class="row g-5">
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-balance-scale fa-2x text-white"></i>
+                            </div>
+                            <h4>{{cake.cakeweight}} Kg</h4><br>
+                            <p class="mb-0">Category : {{cake.categoryid.categoryname}}</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="d-flex align-items-center justify-content-center bg-primary border-inner mb-4" style="width: 90px; height: 90px;">
+                                <i class="fa fa-rupee-sign fa-2x text-white"></i>
+                            </div>
+                            <h4 class="text-uppercase">{{cake.amount}}/-</h4><br>
+                            <p class="mb-0">Flavour : {{cake.flavourid.flavourname}}</p>
+                        </div>
+                    </div>
+                    <br>
+                    <br>
+                    <a href="{% url 'CakeBooking' id=cake.cakeid %}" class="btn btn-primary border-inner py-3 px-5">Order Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- About End -->
+
+{% include "User/UserFooter.html" %}

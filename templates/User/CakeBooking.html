@@ -1,0 +1,107 @@
+{% include "User/UserHeader.html" %}
+
+{% load static %}
+
+ <!-- Page Header Start -->
+    <div class="container-fluid bg-dark bg-img p-5 mb-5">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="display-4 text-uppercase text-white">{{cake.cakename}}</h1>
+            </div>
+        </div>
+    </div>
+<!-- Page Header End -->
+
+<!-- About Start -->
+    <div class="container-fluid pt-5">
+        <div class="container">
+            <div class="section-title position-relative text-center mx-auto mb-5 pb-3" style="max-width: 600px;">
+                <h2 class="text-primary font-secondary">Seal the Sweet Deal</h2>
+                <h1 class="display-4 text-uppercase">Make It Yours Now</h1>
+            </div>
+            <div class="row gx-5">
+                <div class="col-lg-5 mb-5 mb-lg-0" style="min-height: 400px;">
+                    <div class="position-relative h-100">
+                        <img class="position-absolute w-100 h-100" src="/images/{{cake.cakephoto}}" style="object-fit: cover;">
+                    </div>
+                </div>
+                <div class="col-lg-6 pb-5">
+                    <h4 class="mb-4">{{cake.cakename}}</h4>
+
+                    <form method="post" action="{% url 'CakeBooking' id=cake.cakeid %}">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-9">
+                                <div class="row g-3">
+                                    <div class="col-sm-12">
+                                        <textarea class="form-control bg-light border-1 px-4 py-3" rows="4" placeholder="Delivery Address" name="deliveryaddress" required></textarea>
+                                    </div>
+                                    <div class="col-sm-12">
+                                       <input type="date" class="form-control bg-light border-1 px-4" name="requireddate" style="height: 55px;" id="requireddate" required>
+
+                                            <script>
+                                                // Get today's date
+                                                const today = new Date();
+                                                const yyyy = today.getFullYear();
+                                                const mm = String(today.getMonth() + 1).padStart(2, '0'); // Months are 0-based
+                                                const dd = String(today.getDate()).padStart(2, '0');
+
+                                                // Format today's date as YYYY-MM-DD
+                                                const minDate = `${yyyy}-${mm}-${dd}`;
+
+                                                // Get the date one month from today
+                                                const maxDateObj = new Date();
+                                                maxDateObj.setMonth(maxDateObj.getMonth() + 1);
+                                                const maxyyyy = maxDateObj.getFullYear();
+                                                const maxmm = String(maxDateObj.getMonth() + 1).padStart(2, '0');
+                                                const maxdd = String(maxDateObj.getDate()).padStart(2, '0');
+
+                                                // Format the max date as YYYY-MM-DD
+                                                const maxDate = `${maxyyyy}-${maxmm}-${maxdd}`;
+
+                                                // Set min and max attributes on the date input
+                                                const dateInput = document.getElementById('requireddate');
+                                                dateInput.min = minDate;
+                                                dateInput.max = maxDate;
+                                            </script>
+
+                                    </div>
+                                     <div class="col-sm-12">
+                                        <input type="number" min="1" max="10" class="form-control bg-light border-1 px-4" placeholder="Quantity" id="quantity" name="quantity" value="1" style="height: 55px;">
+                                    </div>
+                                     <div class="col-sm-12">
+                                        <input type="number" class="form-control bg-light border-1 px-4" placeholder="Total Amount" name="totalamount" id="totalamount" style="height: 55px;" readonly>
+
+                                        <script>
+                                            // Initial amount (from Django template)
+                                            const cakeAmount = {{ cake.amount }};
+
+                                            // Get the quantity and total amount input fields
+                                            const quantityInput = document.getElementById('quantity');
+                                            const totalAmountInput = document.getElementById('totalamount');
+
+                                            // Set the initial total amount
+                                            totalAmountInput.value = cakeAmount;
+
+                                            // Update the total amount when the quantity changes
+                                            quantityInput.addEventListener('input', () => {
+                                                const quantity = parseInt(quantityInput.value) || 1; // Default to 1 if the input is empty or invalid
+                                                totalAmountInput.value = quantity * cakeAmount;
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+
+                    <br>
+                    <br>
+                    <button type="submit"  class="btn btn-primary border-inner py-3 px-5">Confirm</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- About End -->
+
+{% include "User/UserFooter.html" %}

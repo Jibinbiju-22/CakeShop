@@ -1,0 +1,45 @@
+{% include "Admin/AdminHeader.html" %}
+
+{% load static %}
+
+<div class="container">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                  <center>
+                    <div class="card-header">
+                      <h4 class="card-title">FLAVOUR</h4>
+                    </div>
+                  </center>
+                  <div class="card-body">
+                    <div class="table-responsive">
+                      <table
+                        id="basic-datatables"
+                        class="display table table-striped table-hover"
+                      >
+                        <thead>
+                          <tr>
+                            <th>SL NO.</th>
+                            <th>Flavour Name</th>
+                          </tr>
+                        </thead>
+                        {% for f in flavour %}
+                        <tbody>
+                          <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ f.flavourname }}</td>
+                          </tr>
+                        </tbody>
+                        {% endfor %}
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+{% include "Admin/AdminFooter.html" %}

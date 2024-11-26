@@ -1,0 +1,54 @@
+{% include "Admin/AdminHeader.html" %}
+
+{% load static %}
+
+<script>
+        // Function to clear all fields in the form
+        function clearForm() {
+            document.getElementById("myForm").reset();
+        }
+</script>
+
+<div class="container" xmlns="http://www.w3.org/1999/html">
+          <div class="page-inner">
+            <div class="row">
+              <div class="col-md-12">
+                <div class="card">
+                <form method="post" action="{% url 'FlavourRegistration' %}" id="myForm">
+                {% csrf_token %}
+                  <center>
+                  <div class="card-header">
+                    <div class="card-title">FLAVOUR REGISTRATION</div>
+                  </div>
+                  </center>
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-md-6 col-lg-10">
+                          <div class="form-group">
+                          <label for="flavourname">Flavour Name</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="flavourname"
+                            placeholder="Flavour Name"
+                            name="flavourname"
+                            required
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <center>
+                  <div class="card-action">
+                      <button class="btn btn-success" type="submit">Submit</button>
+                      <button type="button" class="btn btn-danger" onclick="clearForm()">Cancel</button>
+                  </div>
+                  </center>
+                </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+{% include "Admin/AdminFooter.html" %}
